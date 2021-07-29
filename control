@@ -1,0 +1,10 @@
+Package: com.chr1s.actionpotato
+Name: ActionPotato
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Set a custom leaderboard score in the mobile game ActionPotato
+Maintainer: Chr1s
+Author: Chr1s
+Section: Tweaks
+Icon: https://chr1s.dev/assets/actionPotato.png
+Depends: mobilesubstrate (>= 0.9.5000)
