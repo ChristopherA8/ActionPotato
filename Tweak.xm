@@ -7,7 +7,6 @@ int customScore = 0;
 BOOL alertShown = NO;
 
 @interface ScoreToolViewController : UIViewController
-// %new
 -(void)setScoreButtonPressed;
 @end
 
