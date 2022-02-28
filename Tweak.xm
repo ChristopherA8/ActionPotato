@@ -1,19 +1,6 @@
-@interface LevelScoreElem : NSObject
-@property (nonatomic, readwrite, assign) int score;
-@property (nonatomic, readwrite, strong) NSDate *date;
-@end
+#include "Tweak.h"
 
-int customScore = 0;
-BOOL alertShown = NO;
-
-@interface ScoreToolViewController : UIViewController
--(void)setScoreButtonPressed;
-@end
-
-@interface MyAppCore
--(BOOL)webSubmitScore:(id)arg1 levelId:(int)arg2 highScore:(id)arg3 useHs:(BOOL)arg4;
--(void)startGameView;
-@end
+%group ScoreSpoofing
 
 %hook ScoreToolViewController
 -(void)viewDidAppear:(BOOL)animated {
@@ -110,3 +97,57 @@ BOOL alertShown = NO;
 }
 
 %end
+
+%end
+
+
+%group noAds
+
+%hook AdMobSupport
+-(id)init {
+    return nil;
+}
+%end
+
+%hook GADMWebViewRendererChecker
+-(id)initWithWebView:(id)arg1 delegate:(id)arg2 {
+    return nil;
+}
+%end
+
+%hook GADMAdapterHTML
+-(id)initWithGADMAdNetworkConnector:(id)arg1 {
+    return nil;
+}
+%end
+
+%hook GADClickTrackerCollection
+-(id)init {
+    return nil;
+}
+%end
+
+%hook GADMRewardBasedVideoAdNetworkConnector
+-(id)init {
+    return nil;
+}
+%end
+
+%hook GADApplication
+-(id)init {
+    return nil;
+}
+%end
+
+// %hook AnnounceManager
+// - (void)showPopupAds:(int)arg1 onDone:(id)arg2 {
+
+// }
+// %end
+
+%end
+
+%ctor {
+    %init (noAds);
+    %init (ScoreSpoofing);
+}
